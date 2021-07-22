@@ -19,23 +19,23 @@ void	sort_stack_3(t_stack *stack)
 	if (check_sorting(stack->stack_a, stack->stack_a_len) == 2
 		|| stack->stack_a[2] == stack->stack_a_lowest)
 	{
-		do_instruction1(stack ,"ra");
-		do_instruction1(stack ,"ra");
+		do_instruction2(stack ,"ra");
+		do_instruction2(stack ,"ra");
 	}
 	if (stack->stack_a[0] == stack->stack_a_lowest
 		&& stack->stack_a[1] == stack->stack_a_highest)
 	{
-		do_instruction1(stack ,"sa");
-		do_instruction1(stack ,"ra");
+		do_instruction2(stack ,"sa");
+		do_instruction2(stack ,"ra");
 	}
 	if (stack->stack_a[0] == stack->stack_a_highest
 		&& stack->stack_a[1] == stack->stack_a_lowest)
-		do_instruction1(stack ,"ra");;
+		do_instruction2(stack ,"ra");;
 	if (stack->stack_a[0] == stack->stack_a_highest
 		&& stack->stack_a[2] == stack->stack_a_lowest)
 	{
-		do_instruction2(stack ,"rra");
-		do_instruction2(stack ,"rra");
+		do_instruction1(stack ,"rra");
+		do_instruction1(stack ,"rra");
 	}
 	if (stack->stack_a[1] == stack->stack_a_lowest
 		&& stack->stack_a[2] == stack->stack_a_highest)
@@ -59,14 +59,14 @@ void	sort_stack_5(t_stack *stack)
 			i++;
 		if (i <= stack->stack_a_len / 2)
 			while (stack->stack_a[0] != stack->stack_a_lowest)
-				do_instruction1(stack ,"ra");
+				do_instruction2(stack ,"ra");
 		if (i > stack->stack_a_len / 2)
 			while (stack->stack_a[0] != stack->stack_a_lowest)
-				do_instruction2(stack ,"rra");
-		do_pb(stack);
+				do_instruction1(stack ,"rra");
+		do_instruction2(stack, "pb");
 	}
 	if (check_sorting(stack->stack_a, stack->stack_a_len) != 1)
 		sort_stack_3(stack);
 	if (stack->stack_b[0] < stack->stack_b[1])
-		do_instruction1(stack ,"sb");
+		do_instruction2(stack ,"sb");
 }

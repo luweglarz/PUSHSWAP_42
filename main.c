@@ -18,6 +18,7 @@ int main(int ac, char **av)
 
 	init_stack(&stack, av, ac);
 	fill_stack(&stack);
+
 	if (check_sorting(stack.stack_a, stack.stack_a_len) == 1)
 	{
 		free(stack.stack_a);
@@ -27,11 +28,11 @@ int main(int ac, char **av)
 		do_sa(&stack);
 	if (stack.stack_a_len == 3)
 		sort_stack_3(&stack);
-	if (stack.stack_a_len == 5)
+	if (stack.stack_a_len == 5 || stack.stack_a_len == 4)
 	{
 		sort_stack_5(&stack);
 		while (stack.stack_b_len)
-			do_instruction1(&stack ,"pa");
+			do_instruction2(&stack ,"pa");
 		free(stack.stack_b);
 	}
 	if (stack.stack_a_len > 5)

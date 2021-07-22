@@ -49,7 +49,6 @@ void	split_stack(t_stack *stack)
 	int	pivot;
 
 	pivot = find_median(*stack);
-	printf("pivot %d\n", pivot);
 	while (has_lower(pivot, stack))
 	{
 		if (pivot >= stack->stack_a[0])
@@ -72,7 +71,7 @@ void	split_stack2(t_stack *stack)
 	second_stack = compt2(stack);
 	while (first_stack + 1 > second_stack)
 	{
-		do_instruction1(stack, "pb");
+		do_instruction2(stack, "pb");
 		first_stack = compt1(stack);
 		second_stack = compt2(stack);
 	}
@@ -80,25 +79,26 @@ void	split_stack2(t_stack *stack)
 
 void	sort_long_stack(t_stack *stack)
 {
+
 	while (check_sorting(stack->stack_a, stack->stack_a_len) != 1)
 	{
 		while (stack->stack_a[0] > stack->stack_a[stack->stack_a_len - 1])
-			do_instruction2(stack, "rra");
+			do_instruction1(stack, "rra");
 		split_stack2(stack);
 		while (stack->stack_b_len != 0)
 		{
 			if (stack->stack_b[0] < stack->stack_a[0] && stack->stack_b[0]
 			> stack->stack_a[stack->stack_a_len - 1])
-				do_instruction1(stack, "pa");
+				do_instruction2(stack, "pa");
 			else if (stack->stack_b[0] < stack->stack_a[0] && stack->stack_a[0]
 			< stack->stack_a[stack->stack_a_len - 1])
-				do_instruction1(stack, "pa");
+				do_instruction2(stack, "pa");
 			else if (stack->stack_b[0] > stack->stack_a[0] && stack->stack_a[0]
 			< stack->stack_a[stack->stack_a_len - 1] && stack->stack_b[0]
 			> stack->stack_a[stack->stack_a_len - 1])
-				do_instruction1(stack, "pa");
+				do_instruction2(stack, "pa");
 			else
-				do_instruction2(stack, "rra");
+				do_instruction1(stack, "rra");
 		}
 		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1)
 			break ;

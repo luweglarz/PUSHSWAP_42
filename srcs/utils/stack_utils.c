@@ -99,6 +99,16 @@ void	do_instruction2(t_stack *stack, char *str)
 		{
 			write(1, "pb", 2);
 			do_pb(stack);
+		}		
+		if (str[0] == 's' && str[1] == 'b')
+		{
+			write(1, "sb", 2);
+			do_sb(stack);
+		}
+		if (str[0] == 's' && str[1] == 'a')
+		{
+			write(1, "sa", 2);
+			do_sa(stack);
 		}
 	}
 	write (1, "\n", 1);
