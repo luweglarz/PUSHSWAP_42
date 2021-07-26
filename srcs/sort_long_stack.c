@@ -6,11 +6,12 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 16:35:17 by user42            #+#    #+#             */
-/*   Updated: 2021/06/08 00:32:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/26 17:34:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 
 int	compt1(t_stack *stack)
 {
@@ -69,6 +70,7 @@ void	split_stack2(t_stack *stack)
 
 	first_stack = compt1(stack);
 	second_stack = compt2(stack);
+	printf("le compt 1 %d\n le compt2 %d\n", first_stack, second_stack);
 	while (first_stack + 1 > second_stack)
 	{
 		do_instruction2(stack, "pb");

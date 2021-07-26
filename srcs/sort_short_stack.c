@@ -39,7 +39,7 @@ void	sort_stack_3(t_stack *stack)
 	}
 	if (stack->stack_a[1] == stack->stack_a_lowest
 		&& stack->stack_a[2] == stack->stack_a_highest)
-		do_instruction1(stack ,"sa");
+		do_instruction2(stack ,"sa");
 	if (stack->stack_a[1] == stack->stack_a_highest
 		&& stack->stack_a[2] == stack->stack_a_lowest)
 		do_instruction2(stack ,"rra");
