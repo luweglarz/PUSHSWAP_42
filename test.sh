@@ -8,9 +8,7 @@ if [[ $1 =~ ^[+-]?[0-9]+$ ]] && [[ $# == 2 ]]
 then
       for i in {1..5}
       do
-	sleep 0.5s
       ARG=`ruby -e "puts (1..$1).to_a.shuffle.join(' ')"`
-      echo "les ARGS $ARG"
          OUTPUT=$(./push_swap $ARG | wc -l)
       CHECKER=$(./push_swap $ARG | ./checker_$2 $ARG)
       if [ $MIN -gt $OUTPUT ]

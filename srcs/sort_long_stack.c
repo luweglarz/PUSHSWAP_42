@@ -6,14 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 16:35:17 by user42            #+#    #+#             */
-/*   Updated: 2021/07/26 17:34:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/27 22:11:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-
-int	compt1(t_stack *stack)
+int	nb_sup_a(t_stack *stack)
 {
 	int	i;
 	int	j;
@@ -29,7 +28,7 @@ int	compt1(t_stack *stack)
 	return (j);
 }
 
-int	compt2(t_stack *stack)
+int	nb_inf_b(t_stack *stack)
 {
 	int	i;
 	int	j;
@@ -47,48 +46,33 @@ int	compt2(t_stack *stack)
 
 void	split_stack(t_stack *stack)
 {
-	int	pivot;
+	int	stack_a;
+	int	stack_b;
 
-	pivot = find_median(*stack);
-	while (has_lower(pivot, stack))
-	{
-		if (pivot >= stack->stack_a[0])
-			do_pb(stack);
-		else
-			do_ra(stack);
-	}
-	stack->stack_a_lowest = find_lowest(stack->stack_a, stack->stack_a_len);
-	stack->stack_b_lowest = find_lowest(stack->stack_b, stack->stack_b_len);
-	stack->stack_a_highest = find_highest(stack->stack_a, stack->stack_a_len);
-	stack->stack_b_highest = find_highest(stack->stack_b, stack->stack_b_len);
-}
-
-void	split_stack2(t_stack *stack)
-{
-	int	first_stack;
-	int	second_stack;
-
-	first_stack = compt1(stack);
-	second_stack = compt2(stack);
-	printf("le compt 1 %d\n le compt2 %d\n", first_stack, second_stack);
-	while (first_stack + 1 > second_stack)
+	stack_a = nb_sup_a(stack);
+	stack_b = nb_inf_b(stack);
+	while (stack->stack_a[0] > stack->stack_a[stack->stack_a_len - 1])
+			do_instruction1(stack, "rra");
+	while (stack_a + 1 > stack_b)
 	{
 		do_instruction2(stack, "pb");
-		first_stack = compt1(stack);
-		second_stack = compt2(stack);
+		stack_a = nb_sup_a(stack);
+		stack_b = nb_inf_b(stack);
 	}
 }
 
 void	sort_long_stack(t_stack *stack)
 {
-
 	while (check_sorting(stack->stack_a, stack->stack_a_len) != 1)
 	{
-		while (stack->stack_a[0] > stack->stack_a[stack->stack_a_len - 1])
-			do_instruction1(stack, "rra");
-		split_stack2(stack);
+		split_stack(stack);
 		while (stack->stack_b_len != 0)
 		{
+			  for (int i = 0; i < stack->stack_a_len; i++)
+			  	printf("\rstack_a[%d] %d\n",i, stack->stack_a[i]);
+			  printf("\n");
+			  for (int i = 0; i < stack->stack_b_len; i++)
+			  	printf("\rstack_b[%d] %d\n",i, stack->stack_b[i]);
 			if (stack->stack_b[0] < stack->stack_a[0] && stack->stack_b[0]
 			> stack->stack_a[stack->stack_a_len - 1])
 				do_instruction2(stack, "pa");
@@ -98,7 +82,7 @@ void	sort_long_stack(t_stack *stack)
 			else if (stack->stack_b[0] > stack->stack_a[0] && stack->stack_a[0]
 			< stack->stack_a[stack->stack_a_len - 1] && stack->stack_b[0]
 			> stack->stack_a[stack->stack_a_len - 1])
-				do_instruction2(stack, "pa");
+				do_instruction2(stack, "pa"); 
 			else
 				do_instruction1(stack, "rra");
 		}
