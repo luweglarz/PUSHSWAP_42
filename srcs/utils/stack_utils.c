@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:09:06 by user42            #+#    #+#             */
-/*   Updated: 2021/06/07 21:37:41 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/28 22:50:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,61 +55,4 @@ void	init_stack(t_stack *stack, char **av, int ac)
 	stack->stack_b_highest = 0;
 	stack->stack_a_lowest = 0;
 	stack->stack_b_lowest = 0;
-}
-
-void	do_instruction1(t_stack *stack, char *str)
-{
-	int	size;
-
-	size = ft_strlen(str);
-	if (size == 3)
-	{
-		if (str[0] == 'r' && str[1] == 'r' && str[2] == 'a')
-		{
-			write(1, "rra", 3);
-			do_rra(stack);
-		}
-		if (str[0] == 'r' && str[1] == 'r' && str[2] == 'b')
-		{
-			write(1, "rrb", 3);
-			do_rrb(stack);
-		}
-	}
-	write (1, "\n", 1);
-}
-
-void	do_instruction2(t_stack *stack, char *str)
-{
-	int	size;
-
-	size = ft_strlen(str);
-	if (size == 2)
-	{
-		if (str[0] == 'r' && str[1] == 'a')
-		{
-			write(1, "ra", 2);
-			do_ra(stack);
-		}
-		if (str[0] == 'p' && str[1] == 'a')
-		{
-			write(1, "pa", 2);
-			do_pa(stack);
-		}
-		if (str[0] == 'p' && str[1] == 'b')
-		{
-			write(1, "pb", 2);
-			do_pb(stack);
-		}		
-		if (str[0] == 's' && str[1] == 'b')
-		{
-			write(1, "sb", 2);
-			do_sb(stack);
-		}
-		if (str[0] == 's' && str[1] == 'a')
-		{
-			write(1, "sa", 2);
-			do_sa(stack);
-		}
-	}
-	write (1, "\n", 1);
 }

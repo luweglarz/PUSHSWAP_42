@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/07/26 16:45:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/28 22:51:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ void				fill_stack(t_stack *stack);
 void				put_in_stack(t_stack *stack);
 void				error(int errcode, t_stack *stack);
 
-void				do_instruction1(t_stack *stack, char *str);
-void				do_instruction2(t_stack *stack, char *str);
+void				do_instruction_rr(t_stack *stack, char *str);
+void				do_instruction_r(t_stack *stack, char *str);
+void				do_instruction_p(t_stack *stack, char *str);
+void				do_instruction_s(t_stack *stack, char *str);
 
 void				do_sa(t_stack *stack);
 void				do_ra(t_stack *stack);
