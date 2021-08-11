@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:46:42 by user42            #+#    #+#             */
-/*   Updated: 2021/07/28 23:07:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/11 20:59:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	if (stack.stack_a_len == 2)
-		do_sa(&stack);
+		do_instruction_s(&stack, "sa");
 	if (stack.stack_a_len == 3)
 		sort_stack_3(&stack);
 	if (stack.stack_a_len == 5 || stack.stack_a_len == 4)

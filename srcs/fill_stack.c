@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:40:20 by user42            #+#    #+#             */
-/*   Updated: 2021/07/28 23:02:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/11 22:52:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	fill_stack(t_stack *stack)
 	while (stack->av[i])
 	{
 		tmp_atoi = ft_atoi(stack->av[i], stack);
-		if (tmp_atoi < -2147483648 || tmp_atoi > 2147483647)
+		if (tmp_atoi < -2147483648 || tmp_atoi > 2147483647 || ft_strlen(stack->av[i]) == 0)
 			error(ERR_VALUE2, stack);
 		stack->stack_a[j] = (int)tmp_atoi;
 		j++;
